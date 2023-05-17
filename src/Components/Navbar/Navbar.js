@@ -1,36 +1,62 @@
-import {Component} from "react";
-import {MenuData} from "./MenuData";
-import "./NavbarStyles.css"
-import logo from "../../Image/logo.jpg"
+import {  useState, useEffect } from "react";
+import { MenuData } from "./MenuData";
+import "./NavbarStyles.css";
+import logo from "../../Image/white-logo.jpg";
+import { Link } from "react-router-dom";
 
-class Navbar extends Component{
-    state = {clicked: false};
-    handleClick =()=>{
-        this.setState({clicked: !this.state.clicked})
-    }
-    render() {
-        return(
-            <nav className="NavbarItems">
+function Navbar() {
+    const [isConnected, setIsConnected] = useState(false);
+    const [isClicked, setIsClicked] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false)
+
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setIsConnected(true);
+
+        }
+        else {
+            setIsConnected(false);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setIsConnected(false);
+    };
+
+    return (
+        <nav className="NavbarItems">
+            <Link to={"/"}>
                 <img src={logo} alt="logo" />
-                <div className="menu-icons" onClick={this.handleClick}>
-                    <i className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}></i>
-                </div>
-                <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
-                    {MenuData.map((item, index) => {
-                        return(
-                            <li key={index}>
-                                <a href={item.url}
-                                className={item.cName}>
-                                    <i className={item.icon}>
-                                    </i>{item.title}
-                                </a>
-                            </li>
-                        )
-                    })}
+            </Link>
+            <div className="menu-icons" onClick={() => setIsClicked(!isClicked)}>
+                <i className={isClicked ? "fas fa-times" : "fas fa-bars"}></i>
+            </div>
+            <ul className={isClicked ? "nav-menu active" : "nav-menu"}>
+                {MenuData.map((item, index) => {
+                    if (item.title === "Connexion" && isConnected) {
+                        return null;
+                    }
 
-                </ul>
-            </nav>
-        )
-    }
+                    return (
+                        <li key={index}>
+                            <Link to={item.url} className={item.cName}>
+                                <i className={item.icon} ></i>
+                                {item.title}
+                            </Link>
+                        </li>
+                    );
+                })}
+                {isConnected && (
+                    <li>
+                        <button className="btn" onClick={handleLogout}>Déconnexion</button>
+                    </li>
+                )}
+            </ul>
+        </nav>
+    );
 }
+
 export default Navbar;

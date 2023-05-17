@@ -1,0 +1,21 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100%;
+    background-color: #000000;
+}
+
+.cadre {
+    position: relative;
+    width: 80%;
+    height: 50vh;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 40%;
+}

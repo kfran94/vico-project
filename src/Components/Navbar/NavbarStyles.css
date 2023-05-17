@@ -4,8 +4,8 @@
     align-items: center;
     font-size: 1.2rem;
     padding: 0 30px;
-    background: #000;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    background: #FFF;
+    box-shadow: 0 5px 15px rgba(159, 159, 159, 0.5);
     width: 95%;
     height: 80px;
     border-radius: 13px;
@@ -13,6 +13,7 @@
     top: 20px;
     left: 50%;
     transform: translate(-50%);
+    z-index: 99;
 }
 
 .logo{
@@ -23,6 +24,7 @@
 img{
     width: 80px;
     height: auto;
+    margin-top: 5px;
 }
 
 
@@ -43,23 +45,24 @@ img{
 
 .nav-links{
     text-decoration: none;
-    color: white;
+    color: #000000;
     padding: 0.7rem 1rem;
     white-space: nowrap;
 }
 
 .nav-links i{
     padding-right: 10px;
+    color: black;
 }
 
 .nav-links:hover{
-    background: #9F9F9F;
+    background: #e29c03;
     border-radius: 4px;
     transition: all 0.2s ease-in-out;
 }
 
 .fa-bars, .fa-times{
-    color: white;
+    color: #000;
 }
 
 .menu-icons {
@@ -69,11 +72,23 @@ img{
 .nav-links-mobile{
     padding: 0.5rem 1rem;
     white-space: nowrap;
-    background-color: #fafafa;
+    background-color: #007bff;
     border-radius: 3px;
     text-decoration: none;
     font-size: 1.1rem;
-    color: #222;
+    color: #fff;
+    margin: 0;
+}
+
+.btn{
+    padding: 0.25rem 1rem;
+    white-space: nowrap;
+    background-color: #007bff;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 0;
 }
 
 @media screen and (max-width: 850px) {
@@ -81,12 +96,17 @@ img{
         z-index: 99;
     }
 
+    img{
+        width: 80px;
+        height: auto;
+    }
+
     .nav-menu{
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        background: rgb(255, 255, 255);
+        box-shadow: 0 8px 32px 0 rgba(236, 240, 241, 0.37);
         backdrop-filter: blur(4px);
         border-radius: 13px;
         width: 100%;
@@ -107,7 +127,7 @@ img{
     .nav-links{
         display: block;
         padding: 2rem 0;
-        color: #9F9F9F;
+        color: #000;
     }
 
     .nav-links:hover{
@@ -119,6 +139,16 @@ img{
     }
 
     .nav-links-mobile {
+        padding: 1.5rem;
+        display: block;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+        width: 80%;
+        margin: auto;
+
+    }
+    .btn{
         padding: 1.5rem;
         display: block;
         text-align: center;

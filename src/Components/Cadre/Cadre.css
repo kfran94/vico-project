@@ -1,0 +1,27 @@
+.cadre {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.cadre *{
+    color: black;
+}
+
+.hight-level {
+    text-align: center;
+}
+
+.hight-level h1 {
+    margin-bottom: 1rem;
+}
+
+.lower-level {
+    margin-top: 20px;
+}
+
+hr{
+    border-style: solid;
+}

@@ -3,12 +3,26 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto;
-
-
+  color: white;
+  max-width: 100%;
+}
+body{
+  background-color: black;
 }
 
 .App {
   text-align: center;
+}
+.contenu{
+  margin-top: 100px;
+  display: block;
+  height: auto;
+  width: auto;
+}
 
+input, select{
+  border: 1px solid black;
+  border-radius: 5px;
+  max-width: 100%;
 }
 

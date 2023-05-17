@@ -1,37 +1,38 @@
 export const MenuData = [
     {
         title: "Home",
-        url:"#",
+        url:"/",
         cName:"nav-links",
         icon:"fa-solid fa-house-user"
     },
     {
         title: "Inscription",
-        url:"#",
+        url:"/inscription",
         cName:"nav-links",
         icon:"fa-solid fa-address-card"
     },
     {
         title: "Coach",
-        url:"#",
+        url:"/coach",
         cName:"nav-links",
         icon:"fa-solid fa-dumbbell"
     },
     {
         title: "Reservation",
-        url:"#",
+        url:"/reservation",
         cName:"nav-links",
         icon:"fa-solid fa-calendar"
     },
     {
         title: "Newsletter",
-        url:"#",
+        url:"/newsletter",
         cName:"nav-links",
         icon:"fa-solid fa-newspaper"
     },
     {
         title: "Connexion",
-        url:"#",
-        cName:"nav-links-mobile",
+        url: "/login",
+        cName: "nav-links-mobile",
     },
+
 ]
