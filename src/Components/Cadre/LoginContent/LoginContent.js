@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "./LoginContentStyles.css";
 import jwtDecode from "jwt-decode";
+import {useDispatch} from "react-redux";
+import { loginSuccess } from '../../../Actions/UserActions'
+
 
 function LoginForm() {
+    const dispatch = useDispatch();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,14 +24,12 @@ function LoginForm() {
                     console.log(res.data);
                     const token = res.data.token;
                     localStorage.setItem('token', token);
-                    const decodedTokken = jwtDecode(token);
-                    console.log(decodedTokken);
+                    const decodedToken = jwtDecode(token);
+                    console.log(decodedToken);
+                    localStorage.setItem('roles', JSON.stringify(decodedToken.roles))
+                    dispatch(loginSuccess(token, decodedToken.roles));
                     window.location.href= "/"
                 })
-
-
-
-
     };
 
     return (

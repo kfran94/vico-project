@@ -10,7 +10,6 @@ import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
 
 export default function App() {
-
     return (
         <>
             <Router>

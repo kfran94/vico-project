@@ -1,29 +1,22 @@
-import {  useState, useEffect } from "react";
+import {  useState } from "react";
 import { MenuData } from "./MenuData";
 import "./NavbarStyles.css";
 import logo from "../../Image/white-logo.jpg";
 import { Link } from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import {logout} from "../../Actions/UserActions";
 
 function Navbar() {
-    const [isConnected, setIsConnected] = useState(false);
+    const dispatch = useDispatch();
+    const isAuthenticated = useSelector((state) => state.isAuthenticated);
     const [isClicked, setIsClicked] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false)
+    // const [isAdmin, setIsAdmin] = useState(false)
 
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            setIsConnected(true);
 
-        }
-        else {
-            setIsConnected(false);
-        }
-    }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        setIsConnected(false);
+        dispatch(logout());
     };
 
     return (
@@ -36,7 +29,7 @@ function Navbar() {
             </div>
             <ul className={isClicked ? "nav-menu active" : "nav-menu"}>
                 {MenuData.map((item, index) => {
-                    if (item.title === "Connexion" && isConnected) {
+                    if (item.title === "Connexion" && isAuthenticated) {
                         return null;
                     }
 
@@ -49,7 +42,7 @@ function Navbar() {
                         </li>
                     );
                 })}
-                {isConnected && (
+                {isAuthenticated && (
                     <li>
                         <button className="btn" onClick={handleLogout}>Déconnexion</button>
                     </li>
