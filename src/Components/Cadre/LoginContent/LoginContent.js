@@ -4,6 +4,7 @@ import "./LoginContentStyles.css";
 import jwtDecode from "jwt-decode";
 import {useDispatch} from "react-redux";
 import { loginSuccess } from '../../../Actions/UserActions'
+import apiUrl from "../../../config";
 
 
 function LoginForm() {
@@ -15,7 +16,8 @@ function LoginForm() {
         event.preventDefault();
 
 
-            axios.post(`http://127.0.0.1:8000/api/login_check`, {
+            axios.post(`${apiUrl}api/login_check`, {
+
                 "username": username,
                 "password": password
             })

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./RegistrationContentStyles.css"
+import apiUrl from "../../../config";
 
 function RegistrationForm() {
     const [email, setEmail] = useState('');
@@ -17,7 +18,7 @@ function RegistrationForm() {
         event.preventDefault();
 
 
-        axios.post(`http://127.0.0.1:8000/api/register`, {
+        axios.post(`${apiUrl}api/register`, {
             email: email,
             password: password,
             name: name,

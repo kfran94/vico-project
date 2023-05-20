@@ -1,0 +1,30 @@
+
+.hoursParams{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #000000;
+}
+.cadre{
+    width: 90%;
+    margin-left: auto;
+
+}
+
+
+@media (max-width: 915px) {
+    .hoursParams{
+        height: 150vh;
+    }
+    .cadre{
+        padding: 20px 5px;
+        height: 135vh;
+        width: 90%;
+        margin-top: 70vh;
+        margin-left: auto;
+        align-items: center;
+    }
+    
+}

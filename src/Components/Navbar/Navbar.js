@@ -1,5 +1,6 @@
 import {  useState } from "react";
 import { MenuData } from "./MenuData";
+import { MenuDataAdmin } from "./MenuDataAdmin";
 import "./NavbarStyles.css";
 import logo from "../../Image/white-logo.jpg";
 import { Link } from "react-router-dom";
@@ -7,10 +8,12 @@ import {useSelector, useDispatch} from "react-redux";
 import {logout} from "../../Actions/UserActions";
 
 function Navbar() {
+
+    const [isClickedAd, setIsClickedAd] = useState(false);
     const dispatch = useDispatch();
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
     const [isClicked, setIsClicked] = useState(false);
-    // const [isAdmin, setIsAdmin] = useState(false)
+    const isAdmin = useSelector((state)=> state.isAdmin)
 
 
 
@@ -43,9 +46,32 @@ function Navbar() {
                     );
                 })}
                 {isAuthenticated && (
-                    <li>
-                        <button className="btn" onClick={handleLogout}>Déconnexion</button>
-                    </li>
+                    <>
+                        {isAdmin && (
+                            <li
+                                className="dropdown"
+                                onClick={() => setIsClickedAd(!isClickedAd)}
+                            >
+                                <span className="dropdown-title">
+                                     <i className="fa-solid fa-toolbox"></i> Administration
+                                </span>
+                                <ul className={isClickedAd  ? "dropdown-menu active" : "dropdown-menu"}>
+                                    {MenuDataAdmin.map((item, index) => (
+                                        <li key={index}>
+                                            <Link to={item.url} className={item.cName}>
+                                                {item.title}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        )}
+                        <li>
+                            <button className="btn" onClick={handleLogout}>
+                                Déconnexion
+                            </button>
+                        </li>
+                    </>
                 )}
             </ul>
         </nav>
