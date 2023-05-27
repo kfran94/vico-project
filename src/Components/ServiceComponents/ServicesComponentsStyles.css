@@ -1,0 +1,13 @@
+.services-img{
+    width: 400px;
+}
+.services-desc{
+    padding: 15px;
+}
+
+@media (max-width: 399px) {
+    .services-title{
+        font-size: 0.8rem;
+        margin: 1rem 0;
+    }
+}

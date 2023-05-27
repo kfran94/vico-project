@@ -1,6 +1,101 @@
-.coach{
+.coach {
     width: 100%;
-    height: 200vh;
-    background-color: #fc6400;
-    color: pink;
+}
+
+.first-container {
+    background-image: url("../../Image/viko.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.first-container h1 {
+    background: linear-gradient(135deg, rgba(226,156,3,1) 0%, rgba(64,58,58,1) 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-fill-color: transparent;
+}
+
+.second-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.column p {
+    margin-bottom: 0;
+}
+
+.column img {
+    max-width: 100%;
+    height: auto;
+}
+
+.bio-picture{
+    max-height: 100%;
+    width: 100%;
+}
+
+.title-bio{
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.bio{
+    font-size: 1.3rem;
+    text-align: left;
+}
+
+.third-container {
+    background-image: url("../../Image/viko3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.third-container h1 {
+    background: linear-gradient(135deg, rgba(226,156,3,1) 0%, rgb(171, 171, 171) 78%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-fill-color: transparent;
+}
+
+.last-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 1000px) { /* Par exemple, pour les écrans de taille inférieure à 768 pixels */
+    .las-container, .second-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        gap: 0;
+    }
+
+    .revert:nth-child(2) {
+        display: none;
+    }
+
+    .column{
+        width: 100%;
+    }
 }

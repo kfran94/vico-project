@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./HoursListStyles.css"
+import "./HoursListStyles.css";
 import apiUrl from "../../../config";
 
 const HoursList = () => {
@@ -13,41 +13,48 @@ const HoursList = () => {
     });
 
     useEffect(() => {
-        fetch(`${apiUrl}api/hours`)
+        fetch(`${apiUrl}/api/hours`)
             .then(response => response.json())
             .then(data => setHoursList(data));
     }, []);
 
     const formatTime = time => {
         const date = new Date(time);
-        date.setHours(date.getHours() - 1)
+        date.setHours(date.getHours() - 1);
         const options = {
-            timeZone: 'Europe/Paris',
             hour: '2-digit',
             minute: '2-digit'
         };
-        return date.toLocaleString('fr-FR', options);
+        return date.toLocaleTimeString('fr-FR', options);
     };
 
     const handleEdit = (id) => {
         const entry = hoursList.find(entry => entry.id === id);
         setEditingEntry(id);
+        const openingDate = entry.openingHours.substring(0, 10);
+        const openingHours = formatTime(entry.openingHours).substring(0, 5);
+        const breakHours = formatTime(entry.break).substring(0, 5);
+        const closingHours = formatTime(entry.closingHours).substring(0, 5);
         setFormData({
-            day: entry.day,
-            openingHours: entry.openingHours,
-            break: entry.break,
-            closingHours: entry.closingHours
+            day: openingDate,
+            openingHours: openingHours,
+            break: breakHours,
+            closingHours: closingHours
         });
     };
 
-    const handleSave = (id) => {
-        const url = `${apiUrl}admin/hours/${id}`;
 
+    const handleSave = (id) => {
+        const url = `${apiUrl}/admin/hours/${id}`;
+
+        const openingDateTime = '1970-01-01T' + formData.openingHours + ':00+00:00';
+        const closingDateTime = '1970-01-01T' + formData.closingHours + ':00+00:00';
+        const breakDateTime = '1970-01-01T' + formData.break + ':00+00:00';
 
         const modifiedFormData = {
-            opening_hours: formData.openingHours,
-            closing_hours: formData.closingHours,
-            break: formData.break
+            opening_hours: openingDateTime,
+            closing_hours: closingDateTime,
+            break: breakDateTime
         };
 
         fetch(url, {
@@ -59,7 +66,6 @@ const HoursList = () => {
         })
             .then(response => response.json())
             .then(data => {
-
                 setEditingEntry(null);
                 setFormData({
                     day: '',
@@ -67,8 +73,6 @@ const HoursList = () => {
                     break: '',
                     closingHours: ''
                 });
-
-
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -77,8 +81,6 @@ const HoursList = () => {
                 window.location.reload();
             });
     };
-
-
 
 
     return (
@@ -100,43 +102,48 @@ const HoursList = () => {
                             <td>
                                 <input
                                     type="text"
+                                    className="date-input"
                                     value={formData.day}
                                     onChange={(e) =>
-                                        setFormData({...formData, day: e.target.value})
+                                        setFormData({ ...formData, day: e.target.value })
                                     }
                                 />
                             </td>
                             <td>
                                 <input
-                                    type="text"
+                                    type="time"
                                     value={formData.openingHours}
                                     onChange={(e) =>
-                                        setFormData({...formData, openingHours: e.target.value})
+                                        setFormData({ ...formData, openingHours: e.target.value })
                                     }
                                 />
                             </td>
+
+
                             <td>
                                 <input
-                                    type="text"
+                                    type="time"
                                     value={formData.break}
                                     onChange={(e) =>
-                                        setFormData({...formData, break: e.target.value})
+                                        setFormData({ ...formData, break: e.target.value })
                                     }
                                 />
                             </td>
                             <td>
                                 <input
-                                    type="text"
+                                    type="time"
                                     value={formData.closingHours}
                                     onChange={(e) =>
-                                        setFormData({...formData, closingHours: e.target.value})
+                                        setFormData({ ...formData, closingHours: e.target.value })
                                     }
                                 />
                             </td>
                             <td>
                                 {editingEntry === null ? null : (
-                                    <i className="fa-solid fa-check save-icon" onClick={() => handleSave(entry.id)}></i>
-
+                                    <i
+                                        className="fa-solid fa-check save-icon"
+                                        onClick={() => handleSave(entry.id)}
+                                    ></i>
                                 )}
                             </td>
                         </>
@@ -159,5 +166,6 @@ const HoursList = () => {
             </tbody>
         </table>
     );
-}
-export default HoursList
+};
+
+export default HoursList;

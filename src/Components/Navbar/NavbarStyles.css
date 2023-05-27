@@ -61,7 +61,7 @@ img{
     transition: all 0.2s ease-in-out;
 }
 
-.fa-solid, .fa-bars, .fa-times{
+.fa-solid, .fa-bars, .fa-times, .fa-toolbox{
     color: #000;
 }
 
@@ -72,7 +72,7 @@ img{
 .nav-links-mobile{
     padding: 0.5rem 1rem;
     white-space: nowrap;
-    background-color: #007bff;
+    background-color: #000;
     border-radius: 3px;
     text-decoration: none;
     font-size: 1.1rem;
@@ -83,12 +83,16 @@ img{
 .btn{
     padding: 0.25rem 1rem;
     white-space: nowrap;
-    background-color: #007bff;
+    background-color: #282727;
     border-radius: 3px;
     text-decoration: none;
     font-size: 1.1rem;
     color: #fff;
     margin: 0;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #e29c03;
 }
 
 @media screen and (max-width: 850px) {
@@ -217,3 +221,19 @@ img{
 }
 
 
+@media screen and (max-width: 500px) {
+
+    .dropdown-menu {
+
+        display: none;
+        position: absolute;
+        list-style: none;
+        padding: 0;
+        top: 100%;
+        left: 50%;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        z-index: 100;
+        transform: translateY(-100%);
+    }
+}

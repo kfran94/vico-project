@@ -3,26 +3,49 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 60vh;
     width: 100%;
     background-color: #000000;
 }
-.cadre{
-    width: 90%;
-    margin-left: auto;
 
+
+.cadreHours {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.cadreHours *{
+    color: black;
+}
+
+.hight-level {
+    text-align: center;
+}
+
+.hight-level h1 {
+    margin-bottom: 1rem;
+}
+
+.lower-level {
+    margin-top: 20px;
+}
+
+hr{
+    border-style: solid;
 }
 
 
-@media (max-width: 915px) {
-    .hoursParams{
-        height: 150vh;
-    }
-    .cadre{
-        padding: 20px 5px;
-        height: 135vh;
-        width: 90%;
-        margin-top: 70vh;
+
+
+
+@media (max-width: 515px) {
+
+    .cadreHours{
+        padding: 20px 0px;
+        width: 100%;
         margin-left: auto;
         align-items: center;
     }

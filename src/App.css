@@ -20,9 +20,22 @@ body{
   width: auto;
 }
 
-input, select{
+input, select {
   border: 1px solid black;
   border-radius: 5px;
   max-width: 100%;
+  cursor: pointer;
+  height: 23px;
 }
+
+.fa-pen {
+  color: #007bff;
+}
+
+
+
+
+
+
+
 

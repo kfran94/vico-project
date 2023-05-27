@@ -4,7 +4,9 @@
     align-items: center;
 }
 
-
+select{
+    height: auto;
+}
 
 
 .registration label{

@@ -1,0 +1,70 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.form-group-resa{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reservation-formulaire{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.date-select{
+    width: 100%;
+}
+
+
+.btn-verify, .btn-reserve {
+    margin-top: 0.5rem;
+    padding: 0.25rem 1rem;
+    white-space: nowrap;
+    background-color: #282727;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #fff;
+    cursor: pointer;
+    width: 50%;
+}
+
+.btn-verify:hover{
+    background-color: #282727;
+}
+
+.input-date{
+    margin: 1rem;
+    width: 50%;
+}
+
+.input-reservation{
+    margin: 1rem;
+    width: 206.69px;
+    height: 23px;
+}
+
+@media (max-width: 500px) {
+
+    .btn-verify {
+        width: 65%;
+    }
+    .input-date{
+
+        width: 65%;
+    }
+}
+
+.label-reservation {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+

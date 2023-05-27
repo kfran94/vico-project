@@ -5,7 +5,7 @@ function Cadre(props) {
     return (
         <div className="cadre">
             <div className="hight-level">
-                <h1>{props.titre}</h1>
+                <h1 className="cadre-title">{props.titre}</h1>
             </div>
             <hr />
             <div className="lower-level">

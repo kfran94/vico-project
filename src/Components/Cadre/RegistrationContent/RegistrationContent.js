@@ -18,7 +18,7 @@ function RegistrationForm() {
         event.preventDefault();
 
 
-        axios.post(`${apiUrl}api/register`, {
+        axios.post(`${apiUrl}/api/register`, {
             email: email,
             password: password,
             name: name,

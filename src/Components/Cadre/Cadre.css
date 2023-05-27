@@ -10,6 +10,10 @@
     color: black;
 }
 
+.cadre-title{
+    font-size: 2rem;
+}
+
 .hight-level {
     text-align: center;
 }

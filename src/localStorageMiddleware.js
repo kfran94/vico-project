@@ -3,6 +3,7 @@ const localStorageMiddleware = () => (next) => (action) => {
         localStorage.removeItem('persist:root');
         localStorage.removeItem('roles');
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
     }
     return next(action);
 };

@@ -11,7 +11,7 @@ const AdminRouteGuardian = ({ children: Component, ...rest }) => {
         if (isAdmin) {
             return <Outlet/>;
         } else {
-            return <Navigate to="/login"  />;;
+            return <Navigate to="/login"/>;;
         }
 
 };

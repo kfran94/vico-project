@@ -1,0 +1,60 @@
+.addArticleForm {
+    display: block;
+    margin: 0;
+}
+
+.addArticleFormBis {
+    display: inline-flex;
+
+}
+
+.input-form-article {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.formComponents {
+    margin: 0 1rem;
+}
+
+textarea {
+    height: 10rem;
+}
+
+.content-add-article-form {
+    display: block;
+}
+
+.label-form-article {
+    margin-top: 1rem;
+}
+
+.input-form-article-text {
+    width: 100%;
+    display: block;
+    margin-top: 1rem;
+}
+
+.sub-article {
+    margin: 1rem;
+    background-color: #007bff;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    border: none;
+    transition: all 0.15s ease-in-out;
+}
+
+.sub-article:hover {
+    color: #fff;
+    background-color: #0069d9;
+    cursor: pointer;
+}
+
+.fa-pen {
+    color: #007bff !important;
+}

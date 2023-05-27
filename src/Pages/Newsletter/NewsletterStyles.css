@@ -1,5 +1,61 @@
 .newsletter{
     width: 100%;
-    height: 200vh;
-    background-color: #f8d502;
+    margin-top: 8%;
+}
+
+.pagination {
+
+}
+.pagination-btn{
+    background: #da6f00;
+    padding: 0.5rem ;
+    border-radius: 2px;
+    box-shadow: none;
+    margin: 1rem 1rem;
+    border: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 120px;
+
+
+}
+.pagination-btn:hover{
+    background-color: rgba(218, 111, 0, 0.68);
+}
+
+.nbPage{
+    color: white;
+}
+
+
+@media (max-width: 370px) {
+    .newsletter{
+        margin-top: 40%;
+    }
+}
+
+@media (min-width: 371px) and (max-width: 450px) {
+    .newsletter{
+        margin-top: 35%;
+    }
+}
+
+@media (min-width: 451px) and (max-width: 599px) {
+    .newsletter{
+        margin-top: 25%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+    .newsletter{
+        margin-top: 20%;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 1350px) {
+    .newsletter{
+        margin-top: 15%;
+    }
 }

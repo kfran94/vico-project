@@ -1,0 +1,23 @@
+.fa-trash{
+    color : red;
+}
+
+
+.pagination{
+    margin-top: 1rem;
+}
+.pagination-btn-list{
+    margin: 0 5px;
+}
+
+@media (max-width: 500px) {
+    .cadreListArticle i {
+        margin-right: 1rem;
+         }
+        table th,
+        table td {
+            padding: 0.75rem 0;
+        }
+
+
+}

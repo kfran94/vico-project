@@ -10,7 +10,7 @@ export const MenuDataAdmin = [
         cName: "dropdown-link",
     },
     {
-        title: "Articles",
+        title: "Ajouter un articles",
         url: "/admin/articles",
         cName: "dropdown-link",
     },

@@ -1,0 +1,55 @@
+
+.addArticle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100%;
+    background-color: #000000;
+}
+.title-form{
+    font-size: 3rem;
+}
+
+.cadreAddArticle {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.cadreAddArticle *{
+    color: black;
+}
+
+.hight-level {
+    text-align: center;
+}
+
+.hight-level h1 {
+    margin-bottom: 1rem;
+}
+
+.lower-level {
+    margin-top: 20px;
+}
+
+hr{
+    border-style: solid;
+}
+
+
+
+
+
+@media (max-width: 515px) {
+
+    .cadreAddArticle{
+        padding: 20px 0px;
+        width: 100%;
+        margin-left: auto;
+        align-items: center;
+    }
+
+}

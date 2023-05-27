@@ -15,23 +15,36 @@ function LoginForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-
-            axios.post(`${apiUrl}api/login_check`, {
-
-                "username": username,
-                "password": password
+        axios
+            .post(`${apiUrl}/api/login_check`, {
+                username: username,
+                password: password
             })
-                .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-                    const token = res.data.token;
-                    localStorage.setItem('token', token);
-                    const decodedToken = jwtDecode(token);
-                    console.log(decodedToken);
-                    localStorage.setItem('roles', JSON.stringify(decodedToken.roles))
-                    dispatch(loginSuccess(token, decodedToken.roles));
-                    window.location.href= "/"
-                })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                const token = res.data.token;
+                localStorage.setItem('token', token);
+                const decodedToken = jwtDecode(token);
+                console.log(decodedToken);
+                localStorage.setItem('roles', JSON.stringify(decodedToken.roles));
+
+                // Send request to getUserByEmail method
+                const email = decodedToken.username; // Assuming the username is the email
+                axios
+                    .post(`${apiUrl}/api/user`, { email })
+                    .then(response => {
+                        console.log(response);
+                        const userData = response.data;
+                        // Store user info in localStorage
+                        localStorage.setItem('user', JSON.stringify(userData));
+
+                        // Dispatch login success action
+                        dispatch(loginSuccess(token, decodedToken.roles));
+
+                        window.location.href = "/";
+                    })
+            })
     };
 
     return (

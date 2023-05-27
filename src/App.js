@@ -13,6 +13,9 @@ import HoursParams from "./Pages/Admin/HoursParams/HoursParams";
 import ReservationList from "./Pages/Admin/ReservationList/ReservationList";
 import AddArticle from "./Pages/Admin/AddArticle/AddArticle";
 import ListArticles from "./Pages/Admin/ListArticle/ListArticles";
+import Footer from "./Components/Footer/Footer";
+import UserRouteGuardian from "./Components/UserRouteGuardian";
+import NotConnected from "./Pages/NotConnected/NotConnected";
 
 export default function App() {
     return (
@@ -26,9 +29,12 @@ export default function App() {
                             <Route path="/coach" element={<Coach/>}/>
                             <Route path="/inscription" element={<Inscription/>}/>
                             <Route path="/newsletter" element={<Newsletter/>}/>
-                            <Route path="/reservation" element={<Reservation/>}/>
                             <Route path="/login" element={<Login/>}/>
                             <Route path="/registration" element={<Registration/>}/>
+                            <Route path="/connected" element={<NotConnected/>}/>
+                            <Route element={<UserRouteGuardian/>}>
+                                <Route path="/reservation" element={<Reservation/>}/>
+                            </Route>
                             <Route element={<AdminRouteGuardian/>}>
                                 <Route path="/admin/horaires" element={<HoursParams/>}/>
                                 <Route path="/admin/reservations" element={<ReservationList/>}/>
@@ -37,6 +43,7 @@ export default function App() {
                             </Route>
                         </Routes>
                     </div>
+                    <Footer/>
                 </div>
             </Router>
         </>

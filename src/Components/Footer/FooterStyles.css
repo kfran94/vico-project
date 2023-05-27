@@ -1,0 +1,45 @@
+footer {
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-section {
+    flex: 1;
+}
+
+/* Style pour la section centrale du footer */
+.center-section {
+    flex: 1;
+    text-align: center;
+}
+
+
+.right-section {
+    flex: 1;
+}
+
+.img-footer{
+    height: 100px;
+    width: auto;
+    margin-top: 0px;
+}
+
+
+.center-section p {
+    font-size: 16px;
+    color: #9F9F9F;
+}
+
+
+.fa-envelope, .fa-instagram, .fa-whatsapp {
+    margin-left: 10px;
+    color: #9F9F9F;
+    font-size: 40px;
+    transition: color 0.3s ease;
+}
+
+.fa-envelope:hover, .fa-instagram:hover, .fa-whatsapp:hover {
+    color: #a9670a;
+}
