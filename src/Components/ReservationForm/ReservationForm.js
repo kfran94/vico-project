@@ -5,12 +5,15 @@ import "./ReservationFormStyles.css"
 import axios from "axios";
 import { format, addHours, isBefore, parseISO } from 'date-fns';
 import apiUrl from "../../config";
+import {refreshAccessToken} from "../../Actions/Refresh";
 
 const ReservationForm = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [service, setService] = useState('');
     const [selectedInterval, setSelectedInterval] = useState('');
     const [availableIntervals, setAvailableIntervals] = useState([]);
+    const [hasAvailableIntervals, setHasAvailableIntervals] = useState(false);
+    const [isAvailabilityChecked, setIsAvailabilityChecked] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -70,6 +73,8 @@ const ReservationForm = () => {
                 });
 
                 setAvailableIntervals(filteredIntervals);
+                setHasAvailableIntervals(filteredIntervals.length > 0);
+                setIsAvailabilityChecked(true);
             } catch (error) {
                 console.error('Erreur lors de la recherche des réservations:', error);
             }
@@ -93,16 +98,43 @@ const ReservationForm = () => {
                 const user = JSON.parse(userString);
                 const userId = user.id;
 
-
                 const reservationData = {
                     date: dateTime,
                     services: service,
                     clientId: { id: userId }
                 };
 
-                await axios.post(`${apiUrl}/api/reservations/create`, reservationData);
-                console.log('Demande de réservation envoyée avec succès');
-                window.location.href = '/';
+                try {
+                    await axios.post(`${apiUrl}/admin/reservations/create`, reservationData, {
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                        },
+                    });
+                    console.log('Demande de réservation envoyée avec succès');
+                    window.location.href = '/';
+                } catch (error) {
+                    if (error.response && error.response.status === 401) {
+                        try {
+
+                            const newToken = await refreshAccessToken();
+
+
+                            const config = {
+                                headers: {
+                                    'Authorization': 'Bearer ' + newToken,
+                                },
+                            };
+
+                            await axios.post(`${apiUrl}/admin/reservations/create`, reservationData, config);
+                            console.log('Demande de réservation envoyée avec succès');
+                            window.location.href = '/';
+                        } catch (refreshError) {
+                            console.error('Erreur lors de la réservation après le rafraîchissement du token:', refreshError);
+                        }
+                    } else {
+                        console.error('Erreur lors de la réservation:', error);
+                    }
+                }
             } catch (error) {
                 console.error('Erreur lors de la réservation:', error);
             }
@@ -110,7 +142,7 @@ const ReservationForm = () => {
             console.error('Veuillez sélectionner un service et un intervalle');
         }
     };
-;
+
 
     return (
         <div>
@@ -127,7 +159,10 @@ const ReservationForm = () => {
                 </div>
                 <button className="btn-verify" type="submit">Vérifier la disponibilité</button>
             </form>
-            {availableIntervals.length > 0 && (
+            {isAvailabilityChecked && !hasAvailableIntervals && (
+                <p>Pas de créneaux disponibles ce jour.</p>
+            )}
+            {isAvailabilityChecked && hasAvailableIntervals && (
                 <form className="reservation-formulaire" onSubmit={handleReservation}>
                     <h2>Information de la reservation</h2>
                     <div className="form-group-resa">

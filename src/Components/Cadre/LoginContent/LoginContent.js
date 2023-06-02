@@ -24,7 +24,9 @@ function LoginForm() {
                 console.log(res);
                 console.log(res.data);
                 const token = res.data.token;
+                const refreshToken = res.data.refresh_token;
                 localStorage.setItem('token', token);
+                localStorage.setItem('refreshToken', refreshToken)
                 const decodedToken = jwtDecode(token);
                 console.log(decodedToken);
                 localStorage.setItem('roles', JSON.stringify(decodedToken.roles));

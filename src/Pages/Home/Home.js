@@ -1,13 +1,19 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./HomeStyles.css";
-import { Link, useLocation } from "react-router-dom";
-import ServicesComponents from "../../Components/ServiceComponents/ServicesComponents";
-import test from "../../Image/test-services.jpg";
+import { Link } from "react-router-dom";
 import WhyComponents from "../../Components/WhyComponents/WhyComponents";
+import apiUrl from "../../config";
+import New from "../../Components/New/New";
 
 function Home() {
-    const location = useLocation();
-    const message = location.state?.message;
+
+    const [articles, setArticles] = useState([]);
+
+    useEffect(() => {
+        fetch(`${apiUrl}/articles/last`)
+            .then((response) => response.json())
+            .then((data) => setArticles(data));
+    }, []);
 
     return (
         <>
@@ -17,7 +23,7 @@ function Home() {
                 </div>
             </div>
             <div className="why">
-                <h2 className="why-viko">Pourquoi<br/>Coaching by Viko ?</h2>
+                <h2 className="title-section-home">Pourquoi<br/>Coaching by Viko ?</h2>
                     <div className="master-why">
                         <div className="why-row">
                             <div className="why-item">
@@ -65,13 +71,28 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <div className="whats-new">
+                <h2 className="title-section-home">Nos dernières actualités</h2>
+                <div className="new-row">
+                    {articles.map((article) => (
+                        <New
+                            className="article-home"
+                            key={article.id}
+                            id={article.id}
+                            title={article.Title}
+                            date={article.CreatedAt}
+                            image={article.photo}
+                        />
+                    ))}
+                </div>
+            </div>
             <div className="third-section">
                 <Link to="/inscription" className="home-btn">
                     Nos services
                 </Link>
             </div>
             <div className="last-section">
-                <Link to="/inscription" className="home-btn">
+                <Link to="/registration" className="home-btn">
                     Rejoignez-nous
                 </Link>
             </div>

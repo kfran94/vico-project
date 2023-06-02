@@ -19,7 +19,7 @@ const ArticleForm = () => {
         try {
             const response = await axios.post(`${apiUrl}/admin/article/create`, formData, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.token}`,
+                    'Authorization': 'bearer ' + localStorage.getItem('token'),
                     'Content-Type': 'multipart/form-data'
                 },
             });

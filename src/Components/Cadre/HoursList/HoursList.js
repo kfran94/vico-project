@@ -60,6 +60,7 @@ const HoursList = () => {
         fetch(url, {
             method: 'PUT',
             headers: {
+                'Authorization': 'bearer ' + localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(modifiedFormData)

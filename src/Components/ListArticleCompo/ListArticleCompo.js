@@ -27,7 +27,13 @@ const ArticleList = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`${apiUrl}/admin/article/delete/${id}`);
+            await axios.delete(`${apiUrl}/admin/article/delete/${id}` ,{
+                headers: {
+                        'Authorization': 'bearer ' + localStorage.getItem('token'),
+                        'Content-Type': 'application/json'
+
+                }
+            });
             fetchArticles();
         } catch (error) {
             console.error(error);

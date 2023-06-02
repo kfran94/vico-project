@@ -1,14 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import './NewsletterStyles.css';
-import News from "../../Components/News/News";
+import "./Journal.css"
+import New from "../../Components/New/New";
 import apiUrl from "../../config";
 
-function Newsletter() {
+function Journal() {
     const [articles, setArticles] = React.useState([]);
     const [currentPage, setCurrentPage] = React.useState(1);
     const [totalPages, setTotalPages] = React.useState(1);
-
 
     React.useEffect(() => {
         const fetchArticles = async () => {
@@ -16,10 +15,10 @@ function Newsletter() {
                 const response = await axios.get(`${apiUrl}/listArticles`, {
                     params: {
                         page: currentPage,
+                        limit: 30
                     },
                 });
                 const data = response.data;
-                console.log(data)
                 setArticles(data.articles);
                 setTotalPages(data.totalPages);
             } catch (error) {
@@ -38,19 +37,41 @@ function Newsletter() {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
     };
 
+
+    const rowSize = window.innerWidth < 900 ? 1 : 3;
+    const groupedArticles = [];
+    let row = [];
+    articles.forEach((article, index) => {
+        row.push(article);
+        if ((index + 1) % rowSize === 0 || index === articles.length - 1) {
+            groupedArticles.push(row);
+            row = [];
+        }
+    });
+
+
     return (
         <>
             <div className="newsletter">
-                {articles.map((article) => (
-                    <News
-                        key={article.id}
-                        title={article.Title}
-                        date={article.CreatedAt}
-                        image={article.photo}
-                        content={article.content}
-                    />
+                {groupedArticles.map((row, rowIndex) => (
+                    <div key={rowIndex} className="article-row">
+                        {row.map((article) => (
+                            <div className="article">
+                                <New
+                                    className="article-newsletter"
+                                    key={article.id}
+                                    title={article.Title}
+                                    date={article.CreatedAt}
+                                    image={article.photo}
+                                    content={article.content}
+                                    id={article.id}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 ))}
             </div>
+
 
             <div className="pagination">
                 <button
@@ -73,4 +94,4 @@ function Newsletter() {
     );
 }
 
-export default Newsletter;
+export default Journal;

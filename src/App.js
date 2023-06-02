@@ -3,7 +3,6 @@ import Navbar from "./Components/Navbar/Navbar"
 import Home from "./Pages/Home/Home";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Inscription from "./Pages/Inscription/Inscription";
-import Newsletter from "./Pages/Newsletter/Newsletter";
 import Reservation from "./Pages/Reservation/Reservation";
 import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
@@ -16,6 +15,8 @@ import ListArticles from "./Pages/Admin/ListArticle/ListArticles";
 import Footer from "./Components/Footer/Footer";
 import UserRouteGuardian from "./Components/UserRouteGuardian";
 import NotConnected from "./Pages/NotConnected/NotConnected";
+import Journal from "./Pages/Journal/Journal";
+import Article from "./Pages/Article/Article";
 
 export default function App() {
     return (
@@ -28,10 +29,11 @@ export default function App() {
                             <Route path="/" element={<Home/>}/>
                             <Route path="/coach" element={<Coach/>}/>
                             <Route path="/inscription" element={<Inscription/>}/>
-                            <Route path="/newsletter" element={<Newsletter/>}/>
+                            <Route path="/newsletter" element={<Journal/>}/>
                             <Route path="/login" element={<Login/>}/>
                             <Route path="/registration" element={<Registration/>}/>
                             <Route path="/connected" element={<NotConnected/>}/>
+                            <Route path="/article/:id" element={<Article />} />
                             <Route element={<UserRouteGuardian/>}>
                                 <Route path="/reservation" element={<Reservation/>}/>
                             </Route>

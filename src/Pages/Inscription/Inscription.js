@@ -3,7 +3,14 @@ import "./InscriptionStyles.css";
 import firstImg from "../../Image/1st-sub.jpg";
 import { Link } from "react-router-dom";
 import ServicesComponents from "../../Components/ServiceComponents/ServicesComponents";
-import test from "../../Image/test-services.jpg";
+import perte from "../../Image/perte.jpg"
+import perf from "../../Image/devPerf.jpg"
+import cardio from "../../Image/cardio.jpg"
+import grossesse from "../../Image/grossesse.jpg"
+import prise from "../../Image/prise.jpg"
+import reprise from "../../Image/reprise.jpg"
+import tonification from "../../Image/tonification.jpg"
+import remise from "../../Image/remise.jpg"
 
 function Inscription() {
     return (
@@ -54,14 +61,14 @@ function Inscription() {
                     <div className="services-row">
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={prise}
                                 titre="PRISE DE MASSE"
                                 description="Atteignez vos objectifs de développement musculaire avec un programme personnalisé."
                             />
                         </div>
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={perte}
                                 titre="PERTE DE POIDS"
                                 description="Perdez du poids efficacement et gagnez en confiance grâce à un plan d'entraînement adapté."
                             />
@@ -70,14 +77,14 @@ function Inscription() {
                     <div className="services-row">
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={reprise}
                                 titre="REPRISE D'UNE ACTIVITE"
                                 description=" Renforcez vos muscles et retrouvez votre forme après une période d'inactivité."
                             />
                         </div>
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={cardio}
                                 titre="CARDIO BOXE"
                                 description="Intensifiez votre entraînement cardio, brûlez des calories et améliorez votre condition physique avec des exercices inspirés de la boxe."
                             />
@@ -89,14 +96,14 @@ function Inscription() {
                     <div className="services-row">
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={remise}
                                 titre="REMISE EN FORME"
                                 description="Retrouvez le plaisir de l'exercice physique et redécouvrez votre forme grâce à un entraînement sur mesure."
                             />
                         </div>
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={grossesse}
                                 titre="GROSSESSE / POST P."
                                 description="Restez actif pendant votre grossesse ou retrouvez votre silhouette après l'accouchement en toute sécurité."
                             />
@@ -106,14 +113,14 @@ function Inscription() {
                     <div className="services-row">
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={tonification}
                                 titre="TONIFICATION"
                                 description="Sculptez votre corps, tonifiez vos muscles et affinez votre silhouette avec un programme ciblé."
                             />
                         </div>
                         <div className="services-item">
                             <ServicesComponents
-                                photo={test}
+                                photo={perf}
                                 titre="DEVELOPPEMENT DES PERFORMANCES"
                                 description="Augmentez votre force, votre vitesse et votre puissance pour atteindre de nouveaux sommets."
                             />

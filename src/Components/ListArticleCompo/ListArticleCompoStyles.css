@@ -2,6 +2,10 @@
     color : red;
 }
 
+.fa-trash:hover{
+   cursor: pointer;
+}
+
 
 .pagination{
     margin-top: 1rem;

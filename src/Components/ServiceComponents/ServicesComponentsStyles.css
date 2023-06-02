@@ -1,5 +1,6 @@
 .services-img{
     width: 400px;
+    max-height: 600px;
 }
 .services-desc{
     padding: 15px;
