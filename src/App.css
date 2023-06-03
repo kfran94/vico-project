@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Roboto;
+  font-family: Montserrat;
   color: #ecf0f1;
   max-width: 100%;
 }
@@ -32,7 +32,9 @@ input, select {
   color: #007bff;
 }
 
-
+h1,h2,h3,h4,h5{
+    font-family: Castoro Titling;
+}
 
 
 

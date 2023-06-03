@@ -17,12 +17,14 @@ import UserRouteGuardian from "./Components/UserRouteGuardian";
 import NotConnected from "./Pages/NotConnected/NotConnected";
 import Journal from "./Pages/Journal/Journal";
 import Article from "./Pages/Article/Article";
+import ScrollTop from "./Components/ScrollTop";
 
 export default function App() {
     return (
         <>
             <Router>
                 <div className="App">
+                    <ScrollTop />
                     <Navbar/>
                     <div className="contenu">
                         <Routes>

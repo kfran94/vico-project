@@ -67,6 +67,12 @@
     background-image: url("../../Image/lastCover.jpg");
 }
 
+@media (max-width: 500px) {
+    .last-section{
+        background-image: url("../../Image/lastCoverSmall.jpg");
+    }
+}
+
 .bio-container {
     position: absolute;
     top: 55%;
