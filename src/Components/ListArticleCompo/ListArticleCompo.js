@@ -9,9 +9,6 @@ const ArticleList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
-    useEffect(() => {
-        fetchArticles();
-    }, [currentPage]);
 
     const fetchArticles = async () => {
         try {
@@ -24,6 +21,10 @@ const ArticleList = () => {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        fetchArticles();
+    }, [currentPage]);
 
     const handleDelete = async (id) => {
         try {
